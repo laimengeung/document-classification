@@ -1,0 +1,51 @@
+# M1 - Custom CNN trained from scratch (baseline).
+# Run:  python -m src.train --config configs/custom_cnn.yaml --tier dev
+# Any value can be overridden:  --set train.lr=5e-4 --set train.epochs=10
+
+run_name: null            # default: <model.name>_<data.tier>
+seed: 42
+deterministic: false      # true = reproducible cuDNN kernels, but slower
+
+model:
+  name: custom_cnn
+  num_classes: 16
+  in_chans: 1             # grayscale input; no ImageNet weights to match
+  pretrained: false
+  dropout: 0.3
+
+data:
+  tier: main              # dev | main | large (see splits/summary.json)
+  image_size: 224
+  normalize:
+    mean: auto            # "auto" = computed from the training tier (PRD 5.1.4)
+    std: auto
+  num_workers: 2          # free Colab has 2 vCPUs
+
+augment:                  # training only; no flips (PRD 5.2)
+  enabled: true
+  rotation_deg: 4
+  translate: 0.03
+  scale: 0.05
+  brightness: 0.2
+  contrast: 0.2
+  blur_p: 0.3
+  noise_p: 0.3
+  noise_std: 0.03
+
+train:
+  epochs: 30
+  batch_size: 128
+  lr: 1.0e-3              # whole network (no pretrained backbone)
+  head_lr: null           # null = same as lr
+  weight_decay: 0.01
+  label_smoothing: 0.1    # RVL-CDIP has ~8-12% label noise (PRD 4.4)
+  warmup_epochs: 1
+  amp: true
+  grad_clip: 1.0
+  early_stopping_patience: 6
+  log_every: 50           # batches
+
+paths:                    # relative paths resolve against the repo root;
+  splits_dir: splits      # env vars DOCCLS_SPLITS_DIR / DOCCLS_DATA_DIR /
+  data_dir: data/working_copy   # DOCCLS_OUTPUT_DIR override these
+  output_dir: outputs

@@ -1,0 +1,50 @@
+# M3 - EfficientNet-B0 (timm), ImageNet-pretrained, fine-tuned end to end.
+# Same protocol as M2 (PRD Step 5): only the model differs.
+# Run:  python -m src.train --config configs/efficientnet_b0.yaml --tier main
+
+run_name: null
+seed: 42
+deterministic: false
+
+model:
+  name: efficientnet_b0
+  num_classes: 16
+  in_chans: 3
+  pretrained: true
+
+data:
+  tier: main
+  image_size: 224
+  normalize:
+    mean: [0.485, 0.456, 0.406]
+    std: [0.229, 0.224, 0.225]
+  num_workers: 2
+
+augment:
+  enabled: true
+  rotation_deg: 4
+  translate: 0.03
+  scale: 0.05
+  brightness: 0.2
+  contrast: 0.2
+  blur_p: 0.3
+  noise_p: 0.3
+  noise_std: 0.03
+
+train:
+  epochs: 15
+  batch_size: 64
+  lr: 1.0e-4
+  head_lr: 1.0e-3
+  weight_decay: 0.01
+  label_smoothing: 0.1
+  warmup_epochs: 1
+  amp: true
+  grad_clip: 1.0
+  early_stopping_patience: 4
+  log_every: 50
+
+paths:
+  splits_dir: splits
+  data_dir: data/working_copy
+  output_dir: outputs

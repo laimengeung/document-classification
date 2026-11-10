@@ -1,0 +1,76 @@
+{
+  "seed": 42,
+  "official": {
+    "train": {
+      "total": 320000,
+      "per_class": {
+        "letter": 20106,
+        "form": 19957,
+        "email": 19954,
+        "handwritten": 20034,
+        "advertisement": 19963,
+        "scientific report": 19994,
+        "scientific publication": 19902,
+        "specification": 19997,
+        "file folder": 20022,
+        "news article": 20011,
+        "budget": 20010,
+        "invoice": 19947,
+        "presentation": 20043,
+        "questionnaire": 20048,
+        "resume": 20037,
+        "memo": 19975
+      }
+    },
+    "val": {
+      "total": 40000,
+      "per_class": {
+        "letter": 2430,
+        "form": 2537,
+        "email": 2530,
+        "handwritten": 2434,
+        "advertisement": 2522,
+        "scientific report": 2508,
+        "scientific publication": 2526,
+        "specification": 2531,
+        "file folder": 2451,
+        "news article": 2526,
+        "budget": 2485,
+        "invoice": 2576,
+        "presentation": 2468,
+        "questionnaire": 2517,
+        "resume": 2426,
+        "memo": 2533
+      }
+    },
+    "test": {
+      "total": 40000,
+      "per_class": {
+        "letter": 2464,
+        "form": 2506,
+        "email": 2516,
+        "handwritten": 2532,
+        "advertisement": 2515,
+        "scientific report": 2498,
+        "scientific publication": 2572,
+        "specification": 2472,
+        "file folder": 2527,
+        "news article": 2463,
+        "budget": 2505,
+        "invoice": 2477,
+        "presentation": 2489,
+        "questionnaire": 2435,
+        "resume": 2537,
+        "memo": 2492
+      }
+    }
+  },
+  "lists": {
+    "dev_train": 3200,
+    "dev_val": 800,
+    "main_train": 32000,
+    "main_val": 8000,
+    "large_train": 80000,
+    "test": 40000
+  }
+}

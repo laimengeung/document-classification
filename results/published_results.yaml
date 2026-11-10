@@ -1,0 +1,36 @@
+# Published RVL-CDIP test accuracies for the literature comparison table (PRD 6, Appendix B).
+#
+# !! verified: false means the number has NOT yet been checked against the paper itself.
+# !! PRD Step 7: open each paper, confirm the number (and that it is RVL-CDIP *test* accuracy
+# !! with the full 320k training set), then set verified: true. Unverified rows are marked
+# !! with "(unverified)" in the generated table so they cannot slip into the report unnoticed.
+
+- method: AlexNet (ImageNet-pretrained, whole page)
+  paper: Harley et al., ICDAR 2015
+  input: image
+  accuracy: 89.8
+  verified: false
+
+- method: VGG-16 (ImageNet-pretrained)
+  paper: Afzal et al., ICDAR 2017
+  input: image
+  accuracy: 90.97
+  verified: false
+
+- method: VGG-16 region ensemble + stacking
+  paper: Das et al., ICPR 2018
+  input: image
+  accuracy: 92.21
+  verified: false
+
+- method: DiT-base (document-pretrained transformer)
+  paper: Li et al., ACM MM 2022
+  input: image
+  accuracy: 92.11
+  verified: false
+
+- method: LayoutLMv3-base
+  paper: Huang et al., ACM MM 2022
+  input: image + OCR text
+  accuracy: 95.44
+  verified: false

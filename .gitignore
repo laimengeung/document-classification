@@ -1,6 +1,6 @@
 # Data and caches (the working copy lives on Google Drive, never in git)
-data/
-outputs/
+/data/
+/outputs/
 *.tar
 *.tar.gz
 *.tif
